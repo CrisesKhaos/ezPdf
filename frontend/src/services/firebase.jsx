@@ -5,8 +5,10 @@ import { getDatabase } from "firebase/database";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+apiKey = import.meta.env.VITE_FIREBASE_KEY;
 const firebaseConfig = {
-  apiKey: "AIzaSyDIsr1KF8nwgbUi7PTIu3sTcPQXveNcmNo",
+  apiKey: apiKey,
   authDomain: "readysetpdf.firebaseapp.com",
   projectId: "readysetpdf",
   storageBucket: "readysetpdf.firebasestorage.app",
