@@ -1,0 +1,246 @@
+.dash-container {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+}
+
+.input-container {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-navbar {
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--peach);
+}
+
+.uploadPdf {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pdfOutline {
+  width: fit-content;
+  display: flex;
+  padding: 15px;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border-radius: 32px;
+  padding-right: 25px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: scale 0.1s ease-in-out;
+}
+
+.pdfOutline:hover {
+  background-color: var(--white-hover);
+  scale: 1.05;
+}
+
+.plus-icon {
+  font-size: 24px;
+  margin: 0px 10px 0px 0px;
+}
+
+.convo {
+  position: relative;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.convo-label-container {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  padding: 0px 7.5% 0px 7.5%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.navbar {
+  position: absolute;
+  top: 0px;
+  display: flex;
+  width: 100%;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+}
+
+.file-name-container {
+  cursor: pointer;
+  display: flex;
+}
+
+.file-icon {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.file-name-container:hover {
+  text-decoration: underline;
+}
+
+.convo-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.msg-icon {
+  font-size: 20px;
+  margin: 0px 15px 0px 15px;
+  height: 100%;
+  width: 10%;
+}
+
+.chat-name {
+  width: 80%;
+  overflow: hidden;
+}
+.convo-label {
+  margin-top: 10px;
+  border-radius: 32px;
+  width: 100%;
+  height: 36px;
+  padding: 10px 15px 10px 0px;
+  background-color: var(--white);
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  cursor: pointer;
+}
+
+.convo-label:hover {
+  background-color: var(--white-hover);
+}
+.actions-container {
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.actions-container {
+  padding: 0% 7.5% 0% 7.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: var(--white);
+  border-radius: 32px;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+
+.profile-icon {
+  padding: 18px;
+  width: fit-content;
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+.logout-icon {
+  margin: 0px 0px 0px 15px;
+}
+
+.messages-container {
+  width: 80%;
+  height: 80%;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.single-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  padding: 0px 0px 0px 24px;
+}
+.icon-cont {
+  width: fit-content;
+  padding: 18px;
+  font-size: 24px;
+}
+
+.message-cont {
+  width: 85%;
+  padding: 18px;
+}
+
+.question-input {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  background: #dde3ea;
+  border: 1px solid beige;
+  font-size: 16px;
+  padding: 0px 24px 0px 24px;
+}
+
+.input-inside-container {
+  width: 60%;
+  height: 70%;
+  position: relative;
+  border-radius: 32px;
+  display: flex;
+}
+
+.send-icon {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.send-icon:hover {
+  scale: 1.05;
+}
+.icon-cont-send {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 24px;
+  height: 100%;
+  width: fit-content;
+}
+
+.logout:hover {
+  background-color: var(--white-hover);
+  scale: 1.05;
+}
+
+.align-system {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

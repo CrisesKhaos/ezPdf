@@ -1,0 +1,103 @@
+.signin-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.signin-left {
+  background-color: aliceblue;
+  display: flex;
+  height: 100vh;
+  width: 60%;
+  background-color: #fdcb9e;
+}
+.signin-title {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+.signin-right {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f7f7f7;
+}
+
+.signin-card {
+  display: flex;
+  width: 90%;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 52px;
+  width: 70%;
+  background-color: var(--green);
+  color: var(--white);
+  margin: 24px 0px 18px 0px;
+  border-radius: 6px;
+  padding: 4px 16px;
+  font: inherit;
+  border-width: 0;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background-color: #546d47;
+}
+/* From Uiverse.io by aunis1616 */
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  position: static;
+  width: 70%;
+  margin-bottom: 15px;
+}
+
+.coolinput label.text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #f7f7f7;
+  width: fit-content;
+}
+
+.coolinput input[type="text"].input {
+  padding: 11px 10px;
+  height: 25px;
+  font-size: 0.9rem;
+  border: 2px solid;
+  border-radius: 5px;
+  background: #f7f7f7;
+}
+
+.coolinput input[type="password"].input {
+  padding: 11px 10px;
+  height: 25px;
+  font-size: 0.9rem;
+  border: 2px solid;
+  border-radius: 5px;
+  background: #f7f7f7;
+}
+
+.coolinput input[type="text"].input:focus {
+  outline: none;
+}
+
+.anchor {
+  text-decoration: none;
+  color: var(--green);
+}
