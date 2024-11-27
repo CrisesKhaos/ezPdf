@@ -29,6 +29,10 @@ export default function Dashboard() {
   const uploadRef = useRef(null);
   const messagesRef = useRef(null);
   const [currChatName, setCurrChatName] = useState("");
+  const [currChatId, setCurrChatId] = useState("");
+
+  const urlPrefix =
+    "https://chflajmxiusdsijgbeew.supabase.co/storage/v1/object/public/pdfReader/";
   const signOutHandler = async () => {
     console.log("trying to sign out");
     const response = await supabase.auth.signOut();
@@ -36,12 +40,14 @@ export default function Dashboard() {
     navigate("/signin");
   };
 
-  const chatChangeHandler = async (id) => {
-    setCurrentChat(id);
+  const chatChangeHandler = async (chat) => {
+    setCurrentChat(chat.id);
     console.log("starting to get message");
-    onValue(ref(dbRef, "chats/" + id), (msg) => {
+    onValue(ref(dbRef, "chats/" + chat.id), (msg) => {
       setMessages(msg.val());
     });
+    setCurrChatName(chat.name);
+    setCurrChatId(chat.storage_id);
   };
 
   const handleQuestion = async () => {
@@ -69,23 +75,24 @@ export default function Dashboard() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
+    const uid = uuidv4();
     const { data, error } = await supabase.storage
       .from("pdfReader")
-      .upload(userID + "/" + uuidv4(), file);
+      .upload(userID + "/" + uid, file);
     if (data) {
       alert("Upload Succesfull");
       const res = await getText(formData);
 
       await supabase
         .from("chats")
-        .insert([{ created_by: userID, name: file.name }])
+        .insert([{ created_by: userID, name: file.name, storage_id: uid }])
         .select("id")
         .then((data) => {
           set(ref(dbRef, "chats/" + data.data[0].id), [
             {
               role: "user",
               content:
-                "I have extracted the text from a pdf and will be asking some questions related to this text answer in some detail if you cant find the asked question in the pdf tell me the same. Also give me all the outputs in string type format which ill be pasting somehweher else so be sure to use symbols like /n and other things",
+                "I have extracted the text from a pdf and will be asking some questions related to this text answer in some detail if you cant find the asked question in the pdf tell me the same. Give me responses in HTML so i can paste this into my code directly ",
             },
             { role: "assistant", content: "Understood" },
             { role: "user", content: res.data.text },
@@ -100,7 +107,7 @@ export default function Dashboard() {
   const getChats = async () => {
     const { data: chats, error } = await supabase
       .from("chats")
-      .select("id , name")
+      .select("id , name, storage_id")
       .eq("created_by", userID);
     if (chats) {
       setChats(chats);
@@ -160,9 +167,7 @@ export default function Dashboard() {
                 className="convo-label"
                 key={index}
                 onClick={() => {
-                  chatChangeHandler(chat.id);
-                  setCurrChatName(chat.name);
-                  console.log(chat.id);
+                  chatChangeHandler(chat);
                 }}
               >
                 <div className="msg-icon">
@@ -178,8 +183,8 @@ export default function Dashboard() {
             Sign Out
             <MdLogout className="logout-icon" />
           </div>
-          <div className="profile-icon">
-            <MdOutlinePerson />
+          <div className="profile-icon-div">
+            <MdOutlinePerson className="profile-icon" />
           </div>
         </div>
       </div>
@@ -188,10 +193,12 @@ export default function Dashboard() {
           className="navbar"
           style={{ display: currentChat == 0 ? "none" : "flex" }}
         >
-          <div className="file-name-container">
-            <MdInsertDriveFile className="file-icon" />
-            <div>{currChatName}</div>
-          </div>
+          <a target="_blank" href={urlPrefix + "/" + userID + "/" + currChatId}>
+            <div className="file-name-container">
+              <MdInsertDriveFile className="file-icon" />
+              <div>{currChatName}</div>
+            </div>
+          </a>
         </div>
         {currentChat == 0 ? (
           <div className="align-system">

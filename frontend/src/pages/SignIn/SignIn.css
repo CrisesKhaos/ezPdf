@@ -6,12 +6,21 @@
 }
 
 .signin-left {
-  background-color: aliceblue;
   display: flex;
   height: 100vh;
   width: 60%;
   background-color: #fdcb9e;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 6%;
 }
+
+.title {
+  font-size: 98px;
+  font-weight: 600;
+}
+
 .signin-title {
   font-size: 2rem;
   margin-bottom: 24px;

@@ -47,7 +47,10 @@ export default function SignUp() {
 
   return (
     <div className="signin-container">
-      <div className="signin-left"></div>
+      <div className="signin-left">
+        <div className="title">ezPdf</div>
+        <div className="subtitle">Study Smarter, PDF Simplified</div>
+      </div>
       <div className="signin-right">
         <div className="signin-title">Create an Account</div>
         <div className="signin-card">

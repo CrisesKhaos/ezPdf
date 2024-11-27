@@ -1,0 +1,6 @@
+huggingface-hub==0.26.2
+fastapi==0.115.4
+uvicorn==0.32.0
+pypdf==5.1.0
+python-dotenv==1.0.1
+python-multipart==0.0.17

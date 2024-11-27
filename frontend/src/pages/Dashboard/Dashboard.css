@@ -85,6 +85,11 @@
   background-color: var(--white);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .file-name-container {
   cursor: pointer;
   display: flex;
@@ -156,11 +161,21 @@
   transition: scale 0.2s ease-in-out;
 }
 
-.profile-icon {
-  padding: 18px;
+.profile-icon-div {
   width: fit-content;
   background-color: var(--white);
-  border-radius: 50%;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon {
+  margin: 16px;
+  font-size: 18px;
+}
+.profile-icon:hover {
+  background-color: var(--white-hover);
 }
 
 .logout-icon {

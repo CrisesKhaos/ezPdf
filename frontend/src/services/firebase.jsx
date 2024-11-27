@@ -6,7 +6,7 @@ import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 
-apiKey = import.meta.env.VITE_FIREBASE_KEY;
+const apiKey = import.meta.env.VITE_FIREBASE_KEY;
 const firebaseConfig = {
   apiKey: apiKey,
   authDomain: "readysetpdf.firebaseapp.com",
