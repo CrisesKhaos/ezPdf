@@ -168,14 +168,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
 }
 
 .profile-icon {
   margin: 16px;
   font-size: 18px;
 }
-.profile-icon:hover {
+.profile-icon-div:hover {
   background-color: var(--white-hover);
+  scale: 1.05;
 }
 
 .logout-icon {
@@ -258,4 +261,45 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+@media (max-width: 500px) {
+  .left-navbar {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+  }
+  .navbar {
+    height: 10%;
+  }
+  .convo-label {
+    width: 75%;
+  }
+  .convo-label-container {
+    align-items: center;
+  }
+  .actions-container {
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 15px;
+  }
+
+  .menu-icon {
+    position: fixed;
+    left: 4%;
+    top: 2.5%;
+    z-index: 10;
+    cursor: pointer;
+    font-size: 32px;
+  }
+  .convo {
+    width: 100%;
+  }
+  .messages-container {
+    width: 100%;
+  }
+  .single-container {
+    padding-left: 0px;
+  }
 }

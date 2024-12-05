@@ -110,3 +110,25 @@
   text-decoration: none;
   color: var(--green);
 }
+
+@media (max-width: 500px) {
+  .signin-container {
+    flex-direction: column;
+  }
+
+  .signin-left {
+    width: 100%;
+    height: fit-content;
+  }
+  .signin-right {
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  .title {
+    font-size: 78px;
+  }
+  .signin-card {
+    width: 115%;
+  }
+}

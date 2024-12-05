@@ -15,7 +15,8 @@ import { MdSend } from "react-icons/md";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { MdOutlinePerson } from "react-icons/md";
 import { MdInsertDriveFile } from "react-icons/md";
-
+import { MdMenu } from "react-icons/md";
+import useMediaQuery from "../../services/useMediaQuery";
 export default function Dashboard() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -30,7 +31,8 @@ export default function Dashboard() {
   const messagesRef = useRef(null);
   const [currChatName, setCurrChatName] = useState("");
   const [currChatId, setCurrChatId] = useState("");
-
+  const matches = useMediaQuery("(max-width:500px)");
+  const [menuOpen, setMenuOpen] = useState(false);
   const urlPrefix =
     "https://chflajmxiusdsijgbeew.supabase.co/storage/v1/object/public/pdfReader/";
   const signOutHandler = async () => {
@@ -48,6 +50,7 @@ export default function Dashboard() {
     });
     setCurrChatName(chat.name);
     setCurrChatId(chat.storage_id);
+    matches ? setMenuOpen(false) : null;
   };
 
   const handleQuestion = async () => {
@@ -135,67 +138,75 @@ export default function Dashboard() {
 
   return (
     <div className="dash-container">
-      <div className="left-navbar">
-        <div className="uploadPdf">
-          <div
-            className="pdfOutline"
-            onClick={(e) => {
-              uploadRef.current.click();
-            }}
-          >
-            <MdAdd className="plus-icon" />
-            <input
-              type="file"
-              style={{ display: "none" }}
-              ref={uploadRef}
-              onChange={(e) => uploadImage(e)}
-            />
-            Upload Pdf
+      {matches && !menuOpen ? null : (
+        <div className="left-navbar">
+          <div className="uploadPdf">
+            <div
+              className="pdfOutline"
+              onClick={(e) => {
+                uploadRef.current.click();
+              }}
+            >
+              <MdAdd className="plus-icon" />
+              <input
+                type="file"
+                style={{ display: "none" }}
+                ref={uploadRef}
+                onChange={(e) => uploadImage(e)}
+              />
+              Upload Pdf
+            </div>
           </div>
-        </div>
-        <div className="convo-label-container">
-          <div className="convo-title">RECENT CONVERSATIONS</div>
-          <div
-            className="align-system"
-            style={{ display: chatsLoading ? "flex" : "none" }}
-          >
-            <TailSpin visible={chatsLoading} color="#f7f7f7" />
-          </div>
-          {chats.map((chat, index) => {
-            return (
-              <div
-                className="convo-label"
-                key={index}
-                onClick={() => {
-                  chatChangeHandler(chat);
-                }}
-              >
-                <div className="msg-icon">
-                  <MdMessage />
+          <div className="convo-label-container">
+            <div className="convo-title">RECENT CONVERSATIONS</div>
+            <div
+              className="align-system"
+              style={{ display: chatsLoading ? "flex" : "none" }}
+            >
+              <TailSpin visible={chatsLoading} color="#f7f7f7" />
+            </div>
+            {chats.map((chat, index) => {
+              return (
+                <div
+                  className="convo-label"
+                  key={index}
+                  onClick={() => {
+                    chatChangeHandler(chat);
+                  }}
+                >
+                  <div className="msg-icon">
+                    <MdMessage />
+                  </div>
+                  <div className="chat-name">{chat.name}</div>
                 </div>
-                <div className="chat-name">{chat.name}</div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="actions-container">
-          <div className="logout" onClick={signOutHandler}>
-            Sign Out
-            <MdLogout className="logout-icon" />
+              );
+            })}
           </div>
-          <div className="profile-icon-div">
-            <MdOutlinePerson className="profile-icon" />
+          <div className="actions-container">
+            <div className="logout" onClick={signOutHandler}>
+              Sign Out
+              <MdLogout className="logout-icon" />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="convo">
         <div
           className="navbar"
-          style={{ display: currentChat == 0 ? "none" : "flex" }}
+          style={{ display: currentChat == 0 && !matches ? "none" : "flex" }}
         >
+          {matches ? (
+            <MdMenu
+              className="menu-icon"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+              }}
+            />
+          ) : null}
           <a target="_blank" href={urlPrefix + "/" + userID + "/" + currChatId}>
             <div className="file-name-container">
               <MdInsertDriveFile className="file-icon" />
+
               <div>{currChatName}</div>
             </div>
           </a>
